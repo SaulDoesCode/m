@@ -19,8 +19,7 @@ pub mut:
 	quoting bool /*mode u8 subm u8*/
 	std ESC
 	bounds map[string]u8
-	scripts map[string]string
-	esc map[string]ESC
+	scripts map[string]string // esc map[string]ESC
 	state map[string]string
 	lists map[string][]string
 	numbers map[string]f64
@@ -279,6 +278,23 @@ fn main() {
 		}
 		return script
 	}, 2)
+	s.routine("+l", fn(mut s SR, args ...string) ?string {
+		if !(args[0] in s.lists) {
+			s.lists[args[0]] = []
+		}
+		s.lists[args[0]] << args[1]
+		return none
+	}, 2)
+	s.routine("l-", fn(mut s SR, args ...string) ?string {
+		if args[0] in s.lists {
+			s.state["$"] = s.lists[args[0]].pop()
+		}
+		return none
+	}, 1)
+	s.routine("-l", fn(mut s SR, args ...string) ?string {
+		s.lists.delete(args[0])
+		return none
+	}, 1)
 	s.routine("<", fn(mut s SR, args ...string) ?string {
 		r := os.execute(args[0])
 		s.state["r"] = r.output

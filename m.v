@@ -2,11 +2,6 @@ import os
 import os.cmdline
 import strconv
 import math
-/*
-import io
-import net
-import crypto.rand
-*/
 
 type FN = fn (mut SR, ...string) ?string
 type ESC = map[string]FN

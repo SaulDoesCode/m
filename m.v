@@ -234,8 +234,7 @@ fn main() {
 		return none
 	}, 2)
 	s.routine("#", fn(mut s SR, args ...string) ?string {
-		s.numbers[args[0]] = s.numbers["="]
-		println("declared number result ${s.numbers["="]} into variable ${args[0]}")
+		s.numbers[args[0]] = s.numbers["="] // println("declared number result ${s.numbers["="]} into variable ${args[0]}")
 		s.numbers.delete("=")
 		return none
 	}, 1)	

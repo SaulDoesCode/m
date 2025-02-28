@@ -137,7 +137,7 @@ The `main.m` file provides a good example script demonstrating various features:
  a b
 # c
 
-> `~a + ~b = ~c`
+> `~a ** ~b = ~c`
 
 > `okay`
 

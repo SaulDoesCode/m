@@ -118,6 +118,17 @@ Here's a breakdown of each operation and its syntax:
 | **Repeat**      | `r <repetitions> <script_name>`          | Repeats execution of `<script_name>` `<repetitions>` times.               |
 | **Shell Exec**  | `< <command>`                             | Executes `<command>` in the shell, output in `r` state variable.             |
 
+
++l my_tasks `Task A`
++l my_tasks `Task B`
++l my_tasks `Task C`
+
+l- my_tasks  // Pop the last task (Task C)
+> `Popped task: ~$` // Print the popped task
+
+l- my_tasks  // Pop again (Task B)
+> `Popped task: ~$`
+
 **Note on Variable Substitution:** Variable substitution using `~variable_name` works within quoted strings and as arguments to operations.
 
 ## Examples
